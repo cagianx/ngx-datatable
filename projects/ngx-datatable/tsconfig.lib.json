@@ -4,6 +4,7 @@
     "outDir": "../../out-tsc/lib",
     "declarationMap": true,
     "target": "es2015",
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "inlineSources": true,
     "types": [],
