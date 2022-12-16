@@ -6,29 +6,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7.17.1
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        node-version: 12.x
+        node-version: 18.x
 
     - name: Install
-      uses: bahmutov/npm-install@v1
+      run: |
+        pnpm install
+      env:
+        CI: true
 
     - name: Build
       run: |
-        npm run build --if-present
+        pnpm run --if-present build
       env:
         CI: true
 
     - name: Test
       run: |
-        npm run ci --if-present
+        pnpm run --if-present ci
       env:
         CI: true
 
     - name: Build Docs
       run: |
-        npm run build-docs --if-present
+        pnpm run --if-present build-docs
       env:
         CI: true
 
